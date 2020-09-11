@@ -1,0 +1,315 @@
+@charset "utf-8"
+
+/***********************************************************
+  Title
+/***********************************************************
+=title
+  display: block
+  line-height: $line-height-title
+
+/***********************************************************
+  Sentence
+/***********************************************************
+=sentence
+  display: block
+  line-height: $line-height-sentence
+
+/***********************************************************
+  Width
+/***********************************************************
+=width($width)
+  min-width: $width
+  max-width: $width
+  width: $width
+
+=width-unset
+  min-width: unset
+  max-width: unset
+  width: auto
+
+/***********************************************************
+  height
+/***********************************************************
+=height($height)
+  min-height: $height
+  max-height: $height
+  height: $height
+
+/***********************************************************
+  Paragraph Block
+/***********************************************************
+=paragraphBlock
+  margin-top: 1em
+  &.without-space
+    margin-top: 0
+
+/***********************************************************
+  Block Component
+/***********************************************************
+=block-component-all
+  +block-component-space
+  +block-component-margin
+  +block-component-negative-margin
+  +block-component-pad
+  +block-component-border
+
+=block-component-space
+  &.without-space
+    margin-top: 0
+  &.with-space
+    margin-top: $width-m
+  @for $i from 1 through 7
+    &.with-space-#{ nth( $sizes, $i ) }
+      margin-top: nth( $widths, $i )
+
+
+=block-component-margin
+  &.without-margin
+    margin: 0
+  &.with-margin
+    margin: $width-m
+  @for $i from 1 through 7
+    &.with-margin-#{ nth( $sizes, $i ) }
+      margin: nth( $widths, $i )
+
+  @each $direction in $directions
+    &.without-margin-#{$direction}
+      margin-#{$direction}: 0
+    &.with-margin-#{$direction}
+      margin-#{$direction}: $width-m
+    @for $i from 1 through 7
+      &.with-margin-#{$direction}-#{ nth( $sizes, $i ) }
+        margin-#{$direction}: nth( $widths, $i )
+
+  &.without-margin-vertical
+    margin-bottom: 0
+    margin-top: 0
+  &.with-margin-vertical
+    margin-bottom: $width-m
+    margin-top: $width-m
+  @for $i from 1 through 7
+    &.with-margin-vertical-#{ nth( $sizes, $i ) }
+      margin-top: nth( $widths, $i )
+      margin-bottom: nth( $widths, $i )
+
+  &.without-margin-horizon
+    margin-left: 0
+    margin-right: 0
+  &.with-margin-horizon
+    margin-left: $width-m
+    margin-right: $width-m
+  @for $i from 1 through 7
+    &.with-margin-horizon-#{ nth( $sizes, $i ) }
+      margin-left: nth( $widths, $i )
+      margin-right: nth( $widths, $i )
+
+
+=block-component-negative-margin
+  &.without-margin
+    margin: 0
+  &.with-n-margin
+    margin: -$width-m
+  @for $i from 1 through 7
+    &.with-n-margin-#{ nth( $sizes, $i ) }
+      margin: nth( $widths, $i ) * -1
+
+  @each $direction in $directions
+    &.without-margin-#{$direction}
+      margin-#{$direction}: 0
+    &.with-n-margin-#{$direction}
+      margin-#{$direction}: -$width-m
+    @for $i from 1 through 7
+      &.with-n-margin-#{ nth( $sizes, $i ) }
+        margin: nth( $widths, $i ) * -1
+
+  &.without-margin-vertical
+    margin-bottom: 0
+    margin-top: 0
+  &.with-n-margin-vertical
+    margin-bottom: -$width-m
+    margin-top: -$width-m
+  @for $i from 1 through 7
+    &.with-n-margin-vertical-#{ nth( $sizes, $i ) }
+      margin-top: nth( $widths, $i ) * -1
+      margin-bottom: nth( $widths, $i ) * -1
+
+  &.without-margin-horizon
+    margin-left: 0
+    margin-right: 0
+  &.with-n-margin-horizon
+    margin-left: -$width-m
+    margin-right: -$width-m
+  @for $i from 1 through 7
+    &.with-n-margin-horizon-#{ nth( $sizes, $i ) }
+      margin-left: nth( $widths, $i ) * -1
+      margin-right: nth( $widths, $i ) * -1
+
+=block-component-pad
+  &.without-pad
+    padding: 0
+  &.with-pad
+    padding: $width-m
+  @for $i from 1 through 7
+    &.with-pad-#{ nth( $sizes, $i ) }
+      padding: nth( $widths, $i )
+
+  @each $direction in $directions
+    &.without-pad-#{$direction}
+      padding-#{$direction}: 0
+    &.with-pad-#{$direction}
+      padding-#{$direction}: $width-m
+    @for $i from 1 through 7
+      &.with-pad-#{$direction}-#{ nth( $sizes, $i ) }
+        padding-#{$direction}: nth( $widths, $i )
+
+  &.without-pad-vertical
+    padding-bottom: 0
+    padding-top: 0
+  &.with-pad-vertical
+    padding-bottom: $width-m
+    padding-top: $width-m
+  @for $i from 1 through 7
+    &.with-pad-vertical-#{ nth( $sizes, $i ) }
+      padding-top: nth( $widths, $i )
+      padding-bottom: nth( $widths, $i )
+
+  &.without-pad-horizon
+    padding-left: 0
+    padding-right: 0
+  &.with-pad-horizon
+    padding-left: $width-m
+    padding-right: $width-m
+  @for $i from 1 through 7
+    &.with-pad-horizon-#{ nth( $sizes, $i ) }
+      padding-left: nth( $widths, $i )
+      padding-right: nth( $widths, $i )
+
+
+=block-component-border
+  &.without-border
+    border: none
+  &.with-border
+    border: 1px solid $color-border
+
+  @each $direction in $directions
+    &.with-border-#{$direction}
+      border-#{$direction}: 1px solid $color-border
+  &.with-border-vertical
+    border-top: 1px solid $color-border
+    border-bottom: 1px solid $color-border
+  &.with-border-horizon
+    border-right: 1px solid $color-border
+    border-left: 1px solid $color-border
+
+/***********************************************************
+  Flex Component
+/***********************************************************
+=flex-component-all
+  +flex-component-common
+  +flex-component-separate
+  +flex-component-valign
+  +flex-component-align
+
+=flex-component-common
+  display: flex
+  > *
+    flex: 1
+    &.with-fit-content
+      flex: 0 1 auto
+
+=flex-component-separate
+  &.without-separate > *
+    margin-left: 0
+  &.with-separate-xxs > *
+    margin-left: $width-xxs
+  &.with-separate-xs > *
+    margin-left: $width-xs
+  &.with-separate-s > *
+    margin-left: $width-s
+  &.with-separate-m > *
+    margin-left: $width-m
+  &.with-separate-l > *
+    margin-left: $width-l
+  &.with-separate-xl > *
+    margin-left: $width-xl
+  &.with-separate-xxl > *
+    margin-left: $width-xxl
+
+  >*:first-child
+    margin-left: 0
+
+=flex-component-valign
+  &.with-valign-center
+    align-items: center
+
+  &.with-valign-stretch
+    align-items: stretch
+
+  &.with-valign-top
+    align-items: start
+
+  &.with-valign-bottom
+    align-items: end
+
+=flex-component-align
+  &.with-align-center
+    justify-content: center
+
+  &.with-align-left
+    justify-content: flex-start
+
+  &.with-align-right
+    justify-content: flex-end
+
+  &.with-align-sb
+    justify-content: space-between
+
+/***********************************************************
+  Table Component
+/***********************************************************
+$table-max-col: 10
+=table-component
+  +table-component-col
+
+=table-component-col
+  +table-component-col-width
+  +table-component-col-align
+  +table-component-col-valign
+  +table-component-col-font
+
+=table-component-col-align
+  @for $col-num from 1 through $table-max-col
+    &.with-col#{$col-num}-align-left>tbody>tr>*:nth-child(#{$col-num})
+      text-align: left
+    &.with-col#{$col-num}-align-center>tbody>tr>*:nth-child(#{$col-num})
+      text-align: center
+    &.with-col#{$col-num}-align-right>tbody>tr>*:nth-child(#{$col-num})
+      text-align: right
+
+=table-component-col-valign
+  @for $col-num from 1 through $table-max-col
+    &.with-col#{$col-num}-valign-top>tbody>tr>*:nth-child(#{$col-num})
+      vertical-align: top
+    &.with-col#{$col-num}-valign-center>tbody>tr>*:nth-child(#{$col-num})
+      vertical-align: center
+    &.with-col#{$col-num}-valign-bottom>tbody>tr>*:nth-child(#{$col-num})
+      vertical-align: bottom
+
+=table-component-col-font
+  @for $col-num from 1 through $table-max-col
+    &.with-col#{$col-num}-weight-bold>tbody>tr>*:nth-child(#{$col-num})
+      font-weight: bold
+
+=table-component-col-width
+  @for $col-num from 1 through $table-max-col
+    @for $col-width from 1 through 20
+      &.with-col#{$col-num}-width-#{$col-width*5}per>tbody>tr>*:nth-child(#{$col-num})
+        box-sizing: border-box
+        width: $col-width*5%
+      &.with-col#{$col-num}-width-#{$col-width}em>tbody>tr>*:nth-child(#{$col-num})
+        box-sizing: border-box
+        width: #{$col-width}em
+    @for $col-width from 1 through 50
+      &.with-col#{$col-num}-width-#{$col-width*10}px>tbody>tr>*:nth-child(#{$col-num})
+        box-sizing: border-box
+        width: $col-width * 10px

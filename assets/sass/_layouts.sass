@@ -1,0 +1,210 @@
+@charset "utf-8"
+
+/***********************************************************
+  Region
+/***********************************************************
+.region
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+/***********************************************************
+  Brick
+/***********************************************************
+.brick
+  display: block
+  +block-component-all
+
+/***********************************************************
+  Block
+/***********************************************************
+.block
+  @extend .brick
+  margin-top: $width-m
+
+/***********************************************************
+  Row & Column
+/***********************************************************
+.row
+  +flex-component-all
+
+=row-wrap
+  display: block
+  > *
+    margin-left: auto
+
+@media screen and ( max-width: $break-point-l )
+  .row.with-wrap-bp-l
+    +row-wrap
+
+@media screen and ( max-width: $break-point-m )
+  .row.with-wrap-bp-m
+    +row-wrap
+
+@media screen and ( max-width: $break-point-s )
+  .row.with-wrap-bp-s
+    +row-wrap
+
+
+.flexBrick
+  +block-component-all
+  +flex-component-all
+
+/***********************************************************
+  Width
+/***********************************************************
+.width
+  box-sizing: border-box
+
+.w-max
+  @extend .width
+  +width( 100% )
+
+.w-global
+  @extend .width
+  +width( $site-width )
+
+@for $i from 1 through 20
+  .w-#{$i}em
+    @extend .width
+    +width(#{$i}em)
+
+@for $i from 1 through 100
+  .w-#{$i*10}px
+    @extend .width
+    +width(#{$i*10}px)
+
+@for $i from 1 through 100
+  .w-#{$i}per
+    @extend .width
+    +width( #{$i}#{"%"} )
+
+.w-unset
+  +width-unset
+
+@for $i from 1 through 3
+  @media screen and ( max-width: nth( $bp-widths, $i ) )
+    .w-unset-bp-#{ nth( $bp-sizes, $i ) }
+      +width-unset
+    @for $n from 1 through 7
+      .w-parent-offset-#{ nth($sizes, $n) }-bp-#{ nth( $bp-sizes, $i ) }
+        +width-unset
+        margin-left: nth( $widths, $n )
+        margin-right: nth( $widths, $n )
+
+
+/***********************************************************
+  Height
+/***********************************************************
+.height
+  box-sizing: border-box
+
+.h-max
+  @extend .height
+  +height( 100% )
+
+@for $i from 1 through 20
+  .h-#{$i}em
+    @extend .height
+    +height(#{$i}em)
+
+@for $i from 1 through 100
+  .h-#{$i*10}px
+    @extend .height
+    +height(#{$i*10}px)
+
+@for $i from 1 through 100
+  .h-#{$i}per
+    @extend .height
+    +height(#{$i}#{"%"})
+
+.h-unset
+  height: auto
+  max-height: unset
+  min-height: unset
+
+/***********************************************************
+  Position
+/***********************************************************
+@each $direction in $directions
+  .stick-#{$direction}
+    position: absolute
+    #{$direction}: 0
+    @for $i from 1 through 7
+      .stick-#{$direction}-offset-#{ nth( $sizes, $i ) }
+        @extend .stick-#{$direction}
+        #{$direction}: nth( $widths, $i )
+      .stick-#{$direction}-over-#{ nth( $sizes, $i ) }
+        @extend .stick-#{$direction}
+        #{$direction}: nth( $widths, $i ) * -1
+
+.stick-parent
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+@for $i from 1 through 7
+  .stick-parent-offset-#{ nth( $sizes, $i ) }
+    @extend .stick-parent
+    top: nth( $widths, $i )
+    left: nth( $widths, $i )
+    right: nth( $widths, $i )
+    bottom: nth( $widths, $i )
+  .stick-parent-over-#{ nth( $sizes, $i ) }
+    @extend .stick-parent
+    top: nth( $widths, $i ) * -1
+    left: nth( $widths, $i ) * -1
+    right: nth( $widths, $i ) * -1
+    bottom: nth( $widths, $i ) * -1
+
+/***********************************************************
+  Aspect
+/***********************************************************
+.aspect
+  &:before
+    content: ""
+    padding-top: 100%
+    display: block
+    width: 0
+    float: right
+
+  &:after
+    content: ""
+    display: block
+    clear: both
+
+.aspect-square
+  @extend .aspect
+
+.aspect-golden-x
+  @extend .aspect
+  &:before
+    padding-top: 61.8%
+
+.aspect-golden-y
+  @extend .aspect
+  &:before
+    padding-top: 161.8%
+
+.aspect-16x9
+  @extend .aspect
+  &:before
+    padding-top: 56.25%
+
+.aspect-9x16
+  @extend .aspect
+  &:before
+    padding-top: 177.78%
+
+.aspect-4x3
+  @extend .aspect
+  &:before
+    padding-top: 75%
+
+.aspect-3x4
+  @extend .aspect
+  &:before
+    padding-top: 133.33%
+

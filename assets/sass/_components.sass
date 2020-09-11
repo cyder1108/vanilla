@@ -1,0 +1,65 @@
+@charset "utf-8"
+
+/***********************************************************
+  Title
+/***********************************************************
+.title-default
+  +title
+  +block-component-space
+
+/***********************************************************
+  List
+/***********************************************************
+.list-default
+  > li
+    margin-top: $width-xs
+    &:first-child
+      margin-top: 0
+
+.ul-default
+  list-style-type: disc
+  margin-left: 1.5em
+
+.ol-default
+  list-style-type: decimal
+  margin-left: 1.5em
+
+/***********************************************************
+  Button
+/***********************************************************
+.button-default
+  @extend .flexBrick
+  &:hover
+    text-decoration: none
+
+/***********************************************************
+  Box
+/***********************************************************
+.box-default
+  @extend .flexBrick
+
+/***********************************************************
+  Table
+/***********************************************************
+.table-default
+  +table-component
+  width: 100%
+  box-sizing: border-box
+
+/***********************************************************
+  Thumbnail
+/***********************************************************
+.thumb-default
+  background:
+    size: cover
+    repeat: no-repeat
+    position: center center
+  object-fit: cover
+
+  &.with-cover
+    background-size: cover
+    object-fit: cover
+
+  &.with-contain
+    background-size: contain
+    object-fit: contain

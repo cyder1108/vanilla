@@ -1,0 +1,197 @@
+/***********************************************************
+  Align
+/***********************************************************
+.align-center
+  text-align: center
+.align-left
+  text-align: left
+.align-right
+  text-align: right
+
+/***********************************************************
+  Clearfix
+/***********************************************************
+.clearfix
+  &:after
+    content: ""
+    display: block
+    clear: both
+
+/***********************************************************
+  Float
+/***********************************************************
+.float-right
+  float: right
+.float-left
+  float: left
+
+/***********************************************************
+  Display
+/***********************************************************
+.display-block
+  display: block
+.display-inline-block
+  display: inline-block
+.display-inline
+  display: inline
+.display-flex
+  display: flex
+
+/***********************************************************
+  Position
+/***********************************************************
+.position-relative
+  position: relative
+
+.position-absolute
+  position: absolute
+
+/***********************************************************
+  Visibility
+/***********************************************************
+.invisible
+  display: none
+
+.visible
+  display: block
+
+/***********************************************************
+  Through
+/***********************************************************
+.click-through
+  pointer-events: none
+
+/***********************************************************
+  Hazy
+/***********************************************************
+.hazy
+  opacity: 0.5
+
+/***********************************************************
+  Bold
+/***********************************************************
+.bold
+  font-weight: bold
+
+/***********************************************************
+  fontsize
+/***********************************************************
+.fs-xxs
+  font-size: $font-size-xxs
+.fs-xs
+  font-size: $font-size-xs
+.fs-s
+  font-size: $font-size-s
+.fs-m
+  font-size: $font-size-m
+.fs-l
+  font-size: $font-size-l
+.fs-xl
+  font-size: $font-size-xl
+.fs-xxl
+  font-size: $font-size-xxl
+
+/***********************************************************
+  cursor
+/***********************************************************
+.cursor-text
+  cursor: text
+
+.cursor-pointer
+  cursor: pointer
+
+/***********************************************************
+  Color
+/***********************************************************
+.color-danger
+  color: $color-danger
+
+.color-success
+  color: $color-success
+
+.color-info
+  color: $color-info
+
+.color-caution
+  color: $color-caution
+
+//--
+
+.color-white
+  color: white
+
+.color-black
+  color: $color-black
+
+.color-richBlack
+  color: #000
+
+//--
+
+.color-accent
+  color: $color-accent
+
+.color-primary
+  color: $color-primary
+
+.color-link
+  color: $color-link
+
+/***********************************************************
+  Background Color
+/***********************************************************
+.bg-danger
+  background-color: $color-danger
+
+.bg-success
+  background-color: $color-success
+
+.bg-info
+  background-color: $color-info
+
+.bg-caution
+  background-color: $color-caution
+
+//--
+
+.bg-white
+  background-color: white
+
+.bg-black
+  background-color: $color-black
+
+.bg-richBlack
+  background-color: #000
+
+//--
+
+.bg-primary
+  background-color: $color-primary
+
+.bg-accent
+  background-color: $color-accent
+
+.bg-link
+  background-color: $color-link
+
+@for $i from 0 through 20
+  .bg-color-#{$i}
+    background-color: adjust-hue($color-accent, 105deg * $i )
+
+/***********************************************************
+  Font
+/***********************************************************
+.monospace
+  font-family: "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", monospace
+
+/***********************************************************
+  Indent
+/***********************************************************
+.indent
+  margin-left: 1em
+
+/***********************************************************
+  Sandbox
+/***********************************************************
+.sandbox
+  overflow: hidden
